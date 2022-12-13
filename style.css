@@ -1,0 +1,23 @@
+
+body{
+    width: 100vw;
+    height: 200vh;
+}
+
+
+#cards{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card{
+    width: 500px;
+    height: 500px;
+    display: grid;
+    grid-template-rows: 1fr .35fr;
+    background: red;
+}

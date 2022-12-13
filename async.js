@@ -1,24 +1,39 @@
 "use strict"
 
-// 3. Promesas, promesas y más promesas.
-// Dada una lista de usuarios de github guardada en una array, utiliza 'https://api.github.com/users/${name}' para obtener el nombre de cada usuario.
-
-// - Objetivo: Usar Promise.all()
-// - Recordatorio: Una llamada a fetch() devuelve un objeto promesa.
-// - Pregunta. ¿cuántas promesas tendremos?
-
-// Hasta que no se resuelvan todas las promesas desencadenadas por cada fetch(), no se cargarán los datos.
-
-// Pasos:
-
-// - Mapear el array y hacer un fetch() para cada usuario. Esto nos devuelve un array lleno de promesas.
-// - Con Promise.all() harás que se tenga que resolver todo el proceso de peticiones a GitHub a la vez.
-// - Cuando Promise.all() haya terminado:
-//    * Consigue que se imprima por consola la url del repositorio de cada usuario.
-//    * Consigue que se imprima por consola el nombre de cada usuario.
-
-
 async function fetchConection(){
-    let response = await fetch("https://api.github.com/users/${name}");
-    response = await response;
+    let response = await fetch("https://random.imagecdn.app/500/500");
+    const image = response.url
+    return image;
+}
+
+
+let callBack = async () => {
+    try {
+       let nombre = await fetchConection();
+        return nombre;
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+let createCard = () => {
+    const cardsDOM = document.getElementById("cards");
+
+    const divCard = document.createElement("div");
+    divCard.setAttribute("class","card");
+
+    const divInfo = document.createElement("div");
+    const infoElem = document.createElement("p");
+    divInfo.innerHTML = "HOA TIOOOOOOOO";
+
+    const divImg = document.createElement("div");
+    const imgContent = document.createElement("img");
+    imgContent.setAttribute("src",`${callBack()}`);
+ 
+    divCard.append(divImg);
+    divImg.append(imgContent);
+    divCard.append(divInfo);
+    cardsDOM.append(divCard);
 }
